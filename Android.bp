@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2020 The LineageOS Project
+ * Copyright (C) 2020-2021 LineageOS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,13 +34,47 @@ cc_prebuilt_library_shared {
 		},
 	},
 	compile_multilib: "both",
+	check_elf_files: false,
 	prefer: true,
+}
+
+android_app_import {
+	name: "WfdService",
+	owner: "xiaomi",
+	apk: "proprietary/priv-app/WfdService/WfdService.apk",
+	certificate: "platform",
+	dex_preopt: {
+		enabled: false,
+	},
+	privileged: true,
+}
+
+android_app_import {
+	name: "PowerOffAlarm",
+	owner: "xiaomi",
+	apk: "proprietary/product/app/PowerOffAlarm/PowerOffAlarm.apk",
+	certificate: "platform",
+	dex_preopt: {
+		enabled: false,
+	},
+	product_specific: true,
 }
 
 android_app_import {
 	name: "QtiTelephonyService",
 	owner: "xiaomi",
 	apk: "proprietary/product/app/QtiTelephonyService/QtiTelephonyService.apk",
+	certificate: "platform",
+	dex_preopt: {
+		enabled: false,
+	},
+	product_specific: true,
+}
+
+android_app_import {
+	name: "atfwd",
+	owner: "xiaomi",
+	apk: "proprietary/product/app/atfwd/atfwd.apk",
 	certificate: "platform",
 	dex_preopt: {
 		enabled: false,
@@ -85,8 +119,8 @@ android_app_import {
 }
 
 dex_import {
-	name: "com.nxp.nfc",
+	name: "WfdCommon",
 	owner: "xiaomi",
-	jars: ["proprietary/framework/com.nxp.nfc.jar"],
+	jars: ["proprietary/framework/WfdCommon.jar"],
 }
 
